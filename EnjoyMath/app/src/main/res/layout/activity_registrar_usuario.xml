@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondoreg"
+    android:orientation="vertical"
+    tools:context=".Datos.RegistrarUsuario">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="25dp">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:fontFamily="monospace"
+            android:gravity="center_horizontal"
+            android:text="Pon tu nombre aquí:"
+            android:textStyle="bold"
+            android:layout_marginTop="125dp"
+            android:textColor="#fff" />
+        <EditText
+            android:id="@+id/txtNombre"
+            android:layout_width="match_parent"
+            android:background="#fff"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:textSize="20dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:fontFamily="monospace"
+            android:gravity="center_horizontal"
+            android:text="Pon tus apellidos aquí:"
+            android:textStyle="bold"
+            android:textColor="#fff" />
+        <EditText
+            android:id="@+id/txtApellidos"
+            android:layout_width="match_parent"
+            android:background="#fff"
+            android:layout_marginBottom="25dp"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="23dp"
+            android:fontFamily="monospace"
+            android:gravity="center_horizontal"
+            android:text="Tu nombre de usuario es:"
+            android:textStyle="bold"
+            android:textColor="#fff" />
+        <EditText
+            android:id="@+id/txtUsuario"
+            android:layout_width="match_parent"
+            android:background="#fff"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:textSize="20dp"/>
+        <Button
+            android:id="@+id/btnRegistrarUser"
+            android:layout_width="match_parent"
+            android:text="Registrar Usuario"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>

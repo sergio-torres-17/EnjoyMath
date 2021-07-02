@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "626476567978",
+    "project_id": "enjoymath-39606",
+    "storage_bucket": "enjoymath-39606.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:626476567978:android:dcc8f760d2dde5e00defd3",
+        "android_client_info": {
+          "package_name": "com.example.enjoymath"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "626476567978-bdqk7m936obbf6tmluc1ndb8dtfskrbn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCi9GJ133ctdJU0RL5XGvxvoXfKXjjt49w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "626476567978-bdqk7m936obbf6tmluc1ndb8dtfskrbn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
