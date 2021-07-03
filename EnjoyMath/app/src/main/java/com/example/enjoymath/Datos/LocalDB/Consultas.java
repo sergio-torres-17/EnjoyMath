@@ -6,7 +6,13 @@ public class Consultas {
             INSERCIÓN_NIVELES = new String[] {
                     "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_NIVEL,DIFICULTAD,PUNTOS) VALUES(1, 'Fácil',10)",
                     "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_NIVEL,DIFICULTAD,PUNTOS) VALUES(2, 'Fácil',10)",
-                    "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_NIVEL,DIFICULTAD,PUNTOS) VALUES(1, 'Fácil',10)"};
+                    "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_NIVEL,DIFICULTAD,PUNTOS) VALUES(3, 'Fácil',10)",
+                    "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_NIVEL,DIFICULTAD,PUNTOS) VALUES(4, 'Intermedio',10)",
+                    "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_NIVEL,DIFICULTAD,PUNTOS) VALUES(3, 'Intermedio',10)",
+                    "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_NIVEL,DIFICULTAD,PUNTOS) VALUES(4, 'Intermedio',10)",
+                    "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_NIVEL,DIFICULTAD,PUNTOS) VALUES(5, 'Díficil',10)",
+                    "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_NIVEL,DIFICULTAD,PUNTOS) VALUES(6, 'Díficil',10)",
+                    "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_NIVEL,DIFICULTAD,PUNTOS) VALUES(7, 'Díficil',10)"};
     public static final String
             CREACIÓN_HISTORIAL = "CREATE TABLE "+NOMBRES_TABLAS[0]+"(" +
                     "ID_USUARIO INTEGER," +

@@ -30,7 +30,8 @@ public class DbPrincipal extends SQLiteOpenHelper {
     }
     public void insertarNiveles(){
         SQLiteDatabase db = this.getWritableDatabase();
-
+        for (String nivel : Consultas.INSERCIÓN_NIVELES)
+            db.execSQL(nivel);
     }
     public boolean primerArranque(){
         boolean dev;

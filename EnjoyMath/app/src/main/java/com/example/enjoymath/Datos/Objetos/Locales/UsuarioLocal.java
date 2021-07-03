@@ -1,17 +1,17 @@
 package com.example.enjoymath.Datos.Objetos.Locales;
 
-public class UsuariosLocales {
+public class UsuarioLocal {
     private int idUsuario;
     private String nombre, apellidos, usuario, registro;
 
-    public UsuariosLocales(String nombre, String apellidos, String usuario, String registro) {
+    public UsuarioLocal(String nombre, String apellidos, String usuario, String registro) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.usuario = usuario;
         this.registro = registro;
     }
 
-    public UsuariosLocales(int idUsuario, String nombre, String apellidos, String usuario, String registro) {
+    public UsuarioLocal(int idUsuario, String nombre, String apellidos, String usuario, String registro) {
         this.idUsuario = idUsuario;
         this.nombre = nombre;
         this.apellidos = apellidos;
