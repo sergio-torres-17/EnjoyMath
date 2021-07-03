@@ -4,9 +4,9 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.SimpleCursorAdapter;
 
 import androidx.annotation.Nullable;
+
 
 public class DbPrincipal extends SQLiteOpenHelper {
     private final static int DB_VERSION = 1;
@@ -32,7 +32,12 @@ public class DbPrincipal extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         for (String nivel : Consultas.INSERCIÓN_NIVELES)
             db.execSQL(nivel);
+
     }
+    /*public void insertarUsuario(UsuarioLocal usuarioLocal){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("I");
+    }*/
     public boolean primerArranque(){
         boolean dev;
         SQLiteDatabase db = this.getReadableDatabase();//Abrimos la base de datos para su lectura
