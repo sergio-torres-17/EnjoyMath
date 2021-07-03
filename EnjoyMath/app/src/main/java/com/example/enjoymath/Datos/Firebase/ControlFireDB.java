@@ -34,8 +34,6 @@ public class ControlFireDB {
         escribir(rutaPartidas+"/"+usuarioAnfitrión.getUsuario()+"_"+usuarioInvitado.getUsuario()+"/"+new Date().toString()+"/puntaje"+usuarioAnfitrión.getUsuario(), "0");
         //partida finalizada
         escribir(rutaPartidas+"/"+usuarioAnfitrión.getUsuario()+"_"+usuarioInvitado.getUsuario()+"/"+new Date().toString()+"/partidaFinalizada/", "false");
-
-
     }
 
     public void escribir(String ruta, String valor){
