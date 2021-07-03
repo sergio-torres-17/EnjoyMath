@@ -7,4 +7,19 @@
     android:background="@drawable/juego"
     tools:context=".Splash">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="220dp"
+        android:layout_height="281dp"
+        android:fontFamily="cursive"
+        android:text="Enjoy Math"
+        android:textColor="#11238E"
+        android:textSize="70dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.167"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
