@@ -17,6 +17,12 @@ public class Historial {
         this.nivel = nivel;
         this.ultimoAcceso = ultimoAcceso;
     }
+    public Historial(String[] infoComillada) {
+        this.idUsuario =  Integer.parseInt(infoComillada[0]);
+        this.puntosAcumulados = Integer.parseInt(infoComillada[1]);
+        this.nivel = infoComillada[2];
+        this.ultimoAcceso = infoComillada[3];
+    }
 
     public int getIdUsuario() {
         return idUsuario;
