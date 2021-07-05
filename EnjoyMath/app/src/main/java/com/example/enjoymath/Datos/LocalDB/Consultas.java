@@ -8,15 +8,15 @@ public class Consultas {
                     "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_JUEGO,DIFICULTAD,PUNTOS) VALUES(2, 'Fácil',10)",
                     "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_JUEGO,DIFICULTAD,PUNTOS) VALUES(3, 'Fácil',10)",
                     "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_JUEGO,DIFICULTAD,PUNTOS) VALUES(4, 'Intermedio',25)",
-                    "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_JUEGO,DIFICULTAD,PUNTOS) VALUES(3, 'Intermedio',30)",
-                    "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_JUEGO,DIFICULTAD,PUNTOS) VALUES(4, 'Intermedio',25)",
-                    "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_JUEGO,DIFICULTAD,PUNTOS) VALUES(5, 'Díficil',50)",
-                    "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_JUEGO,DIFICULTAD,PUNTOS) VALUES(6, 'Díficil',50)",
-                    "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_JUEGO,DIFICULTAD,PUNTOS) VALUES(7, 'Díficil',50)"};
+                    "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_JUEGO,DIFICULTAD,PUNTOS) VALUES(5, 'Intermedio',30)",
+                    "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_JUEGO,DIFICULTAD,PUNTOS) VALUES(6, 'Intermedio',25)",
+                    "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_JUEGO,DIFICULTAD,PUNTOS) VALUES(7, 'Díficil',50)",
+                    "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_JUEGO,DIFICULTAD,PUNTOS) VALUES(8, 'Díficil',50)",
+                    "INSERT INTO "+NOMBRES_TABLAS[5]+"(ID_JUEGO,DIFICULTAD,PUNTOS) VALUES(9, 'Díficil',50)"};
     public static final String
             CREACIÓN_HISTORIAL = "CREATE TABLE "+NOMBRES_TABLAS[0]+"(" +
                     "ID_USUARIO INTEGER," +
-                    "NIVEL TEXT," +
+                    "NIVEL INTEGER," +
                     "PUNTOS_ACUULADOS INTEGER," +
                     "ULTIMO_ACCESO DATETIME)",
             CREACIÓN_USUARIOS_LOCALES = "CREATE TABLE "+NOMBRES_TABLAS[1]+"(" +
@@ -43,7 +43,6 @@ public class Consultas {
                     "(SELECT * FROM USUARIOS_LOGROS UL" +
                     "INNER JOIN LOGROS LG " +
                     "ON UL.ID_LOGRO = LG.ID_LOGRO" +
-                    "WHERE UL.ID_USUARIO = ?)"
-            ;
+                    "WHERE UL.ID_USUARIO = ?)";
 
 }

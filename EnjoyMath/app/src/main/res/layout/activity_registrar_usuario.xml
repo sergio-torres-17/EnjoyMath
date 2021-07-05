@@ -62,11 +62,14 @@
             android:background="#fff"
             android:layout_height="wrap_content"
             android:layout_marginBottom="25dp"
+
             android:textSize="20dp"/>
+
         <Button
             android:id="@+id/btnRegistrarUser"
             android:layout_width="match_parent"
-            android:text="Registrar Usuario"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+
+            android:text="Registrar Usuario" />
     </LinearLayout>
 </LinearLayout>

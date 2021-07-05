@@ -16,6 +16,7 @@ public class Splash extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         this.am = new AccesoMaestro(this);
+        //this.deleteDatabase("DB_ENJOY");
         Thread hilo = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -24,13 +25,12 @@ public class Splash extends AppCompatActivity {
                     if(am.validarPrimerArranque()){
                         am.insertarNiveles();
                         Intent intent= new Intent(Splash.this, RegistrarUsuario.class);
-                        intent.putExtra("objConexión", am);
                         startActivity(intent);
                         finish();
                     }
                     else{
                         Intent intent= new Intent(Splash.this, MenuPrincipal.class);
-                        intent.putExtra("objConexión", am);
+                        intent.putExtra("idUsuario", am.devolverIdActivo());
                         startActivity(intent);
                         finish();
                     }

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+
     tools:context=".Facil">
 <LinearLayout
     android:layout_width="match_parent"
@@ -40,21 +41,24 @@
 
     <ImageButton
         android:id="@+id/btnRespuesta1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="170dp"
         android:layout_weight="1"
+        android:scaleType="fitCenter"
         tools:srcCompat="@tools:sample/avatars" />
     <ImageButton
         android:id="@+id/btnRespuesta2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="170dp"
         android:layout_weight="1"
+        android:scaleType="fitCenter"
         tools:srcCompat="@tools:sample/avatars" />
     <ImageButton
         android:id="@+id/btnRespuesta3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="160dp"
+        android:layout_height="170dp"
         android:layout_weight="1"
+        android:scaleType="fitCenter"
         tools:srcCompat="@tools:sample/avatars" />
 </LinearLayout>
 

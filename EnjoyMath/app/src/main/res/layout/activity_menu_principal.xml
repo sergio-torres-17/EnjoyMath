@@ -9,7 +9,7 @@
     tools:context=".MenuPrincipal">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnMiAprendizaje"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
@@ -19,7 +19,7 @@
         tools:layout_editor_absoluteY="209dp" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnJuggarConUnAmigo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"

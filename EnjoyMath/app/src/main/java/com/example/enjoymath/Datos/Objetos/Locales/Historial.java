@@ -2,16 +2,16 @@ package com.example.enjoymath.Datos.Objetos.Locales;
 
 public class Historial {
     private int idUsuario, puntosAcumulados;
-    private String nivel;
+    private int nivel;
     private String ultimoAcceso;
 
-    public Historial(int puntosAcumulados, String nivel, String ultimoAcceso) {
+    public Historial(int puntosAcumulados, int nivel, String ultimoAcceso) {
         this.puntosAcumulados = puntosAcumulados;
         this.nivel = nivel;
         this.ultimoAcceso = ultimoAcceso;
     }
 
-    public Historial(int idUsuario, int puntosAcumulados, String nivel, String ultimoAcceso) {
+    public Historial(int idUsuario, int puntosAcumulados, int nivel, String ultimoAcceso) {
         this.idUsuario = idUsuario;
         this.puntosAcumulados = puntosAcumulados;
         this.nivel = nivel;
@@ -20,7 +20,7 @@ public class Historial {
     public Historial(String[] infoComillada) {
         this.idUsuario =  Integer.parseInt(infoComillada[0]);
         this.puntosAcumulados = Integer.parseInt(infoComillada[1]);
-        this.nivel = infoComillada[2];
+        this.nivel = Integer.parseInt(infoComillada[2]);
         this.ultimoAcceso = infoComillada[3];
     }
 
@@ -40,11 +40,11 @@ public class Historial {
         this.puntosAcumulados = puntosAcumulados;
     }
 
-    public String getNivel() {
+    public int getNivel() {
         return nivel;
     }
 
-    public void setNivel(String nivel) {
+    public void setNivel(int nivel) {
         this.nivel = nivel;
     }
 

@@ -11,6 +11,8 @@ import com.example.enjoymath.Datos.Objetos.Locales.Historial;
 import com.example.enjoymath.Datos.Objetos.Locales.UsuarioLocal;
 import com.example.enjoymath.Negocio.AccesoMaestro;
 
+import java.util.Date;
+
 
 public class DbPrincipal extends SQLiteOpenHelper {
     private final static int DB_VERSION = 1;
@@ -24,7 +26,6 @@ public class DbPrincipal extends SQLiteOpenHelper {
         db.execSQL(Consultas.CREACIÓN_HISTORIAL);
         db.execSQL(Consultas.CREACIÓN_LOGROS);
         db.execSQL(Consultas.CREACIÓN_USUARIOS_LOGROS);
-        //db.execSQL(Consultas.CREACIÓN_VISTA_LOGROS_GENERAL);
         db.execSQL(Consultas.CREACIÓN_JUEGOS_NIVELES);
     }
 
@@ -38,7 +39,6 @@ public class DbPrincipal extends SQLiteOpenHelper {
             for (String nivel : Consultas.INSERCIÓN_NIVELES)
                 db.execSQL(nivel);
         }
-
     }
 
     /**
@@ -53,7 +53,8 @@ public class DbPrincipal extends SQLiteOpenHelper {
         contenedor.put("USUARIO",usr.getUsuario());
         contenedor.put("REGISTRO",usr.getRegistro());
         contenedor.put("ACTIVO",0);
-        db.insert(Consultas.NOMBRES_TABLAS[2], null, contenedor);
+        db.insert(Consultas.NOMBRES_TABLAS[1], null, contenedor);
+        this.insertarHistorialNuevo();
     }
 
     /**
@@ -66,7 +67,7 @@ public class DbPrincipal extends SQLiteOpenHelper {
         Cursor lector = db.rawQuery("SELECT ID_USUARIO FROM USUARIOS", null);//Ejecutamos el select para ver si existe algun usuario
         lector.moveToFirst();//Nos movemos al primer registro que arroje
         dev = (lector.getCount()==0);//Si el contador es menor a 0 quiere decir que no hay registros
-        System.out.println(lector.getCount()+"numerod e lineas");
+        System.out.println(lector.getCount()+"numero de lineas");
         lector.close();//Cerramos la lectura
         return dev;//devolvemos el valor
     }
@@ -79,10 +80,20 @@ public class DbPrincipal extends SQLiteOpenHelper {
         lector.close();
         return dev;
     }
+    public int devolverUsuarioArbitrario(){
+        int dev = -1;
+        SQLiteDatabase db = this.getReadableDatabase();//Abrimos la base de datos para su lectura
+        Cursor lector = db.rawQuery("SELECT ID_USUARIO FROM USUARIOS", null);//Ejecutamos el select para ver si existe algun usuario
+        lector.moveToFirst();//Nos movemos al primer registro que arroje
+        dev =(lector.getCount()>0)? lector.getInt(0):-1;
+        lector.close();
+        return dev;
+    }
     public String devolverHistorial(int idUsuario){
         String dev = null;
         SQLiteDatabase db = this.getReadableDatabase();//Abrimos la base de datos para su lectura
-        Cursor lector = db.rawQuery("SELECT * FROM USUARIO where ID_USUARIO = ?", new String[]{String.valueOf(idUsuario)});//Ejecutamos el select para ver si existe algún usuario
+        System.out.println("id en consulta: "+idUsuario);
+        Cursor lector = db.rawQuery("SELECT * FROM HISTORIAL where ID_USUARIO = ?", new String[]{String.valueOf(idUsuario)});//Ejecutamos el select para ver si existe algún usuario
         lector.moveToFirst();
         if(lector.getCount()>0)
             dev = lector.getInt(0) +","+lector.getInt(2)+","+lector.getString(1)+","+lector.getString(3);
@@ -97,4 +108,35 @@ public class DbPrincipal extends SQLiteOpenHelper {
         lector.close();
         return dev;
     }
+    private void insertarHistorialNuevo(){
+        int id = this.devolverUsuarioArbitrario();
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contenedor = new ContentValues();
+        contenedor.put("ID_USUARIO",id);
+        contenedor.put("NIVEL",1);
+        contenedor.put("PUNTOS_ACUULADOS",0);
+        contenedor.put("ULTIMO_ACCESO", new Date().toString());
+        db.insert(Consultas.NOMBRES_TABLAS[0], null, contenedor);
+    }
+    public void actualizarAvance(int idusuario, Historial historial){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contenedor = new ContentValues();
+        contenedor.put("ID_USUARIO",idusuario);
+        contenedor.put("NIVEL",historial.getNivel());
+        contenedor.put("PUNTOS_ACUULADOS",historial.getPuntosAcumulados());
+        contenedor.put("ULTIMO_ACCESO", new Date().toString());
+        db.update(Consultas.NOMBRES_TABLAS[0], contenedor, "ID_USUARIO = ?", new String[]{String.valueOf(idusuario)});
+    }
+    public int traerPuntosJuegoActual(int juegoActual){
+        int dev = 0;
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor lector = db.rawQuery("SELECT puntos from JUEGOS_NIVELES where ID_JUEGO = ?",new String[]{String.valueOf(juegoActual)});
+        lector.moveToFirst();
+        if(lector.getCount()>0){
+            dev = lector.getInt(0);
+        }
+        lector.close();
+        return dev;
+    }
+
 }
