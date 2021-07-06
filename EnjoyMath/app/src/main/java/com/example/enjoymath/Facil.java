@@ -3,6 +3,7 @@ package com.example.enjoymath;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import com.example.enjoymath.Datos.MateLógica.ControlGeneral;
 import com.example.enjoymath.Datos.Objetos.Locales.Historial;
 import com.example.enjoymath.Negocio.AccesoMaestro;
+
+import java.util.Date;
 
 public class Facil extends AppCompatActivity {
 
@@ -31,6 +34,21 @@ public class Facil extends AppCompatActivity {
         this.r1 = findViewById(R.id.btnRespuesta1);
         this.r2 = findViewById(R.id.btnRespuesta2);
         this.r3 = findViewById(R.id.btnRespuesta3);
-        new ControlGeneral(this.miHistorial, Facil.this).métodoMaestro(pregunta, r1,r2,r3, this.miHistorial.getNivel());
+        this.inicializarEventoPrincipal();
+    }
+    private void inicializarEventoPrincipal(){
+        View.OnClickListener evento =  new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                am.actualizarInformaciónHistorial(idUser,
+                        new Historial(idUser,
+                                miHistorial.getPuntosAcumulados()+am.traerPuntosJuegoActual(idJuego),
+                                miHistorial.getNivel()+1,
+                                new Date().toString()));
+                miHistorial = am.devolverHistorial(idUser);
+                inicializarEventoPrincipal();
+            }
+        };
+        new ControlGeneral(this.miHistorial, Facil.this).métodoMaestro(pregunta, r1, r2, r3, this.miHistorial.getNivel(),evento);
     }
 }

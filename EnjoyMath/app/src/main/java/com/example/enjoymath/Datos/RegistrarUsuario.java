@@ -5,6 +5,7 @@ import androidx.core.view.ViewPropertyAnimatorListener;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -20,6 +21,7 @@ import com.example.enjoymath.Datos.Objetos.Usuario;
 import com.example.enjoymath.MainActivity;
 import com.example.enjoymath.Negocio.AccesoMaestro;
 import com.example.enjoymath.R;
+import com.example.enjoymath.Splash;
 
 import java.util.Date;
 
@@ -95,7 +97,10 @@ public class RegistrarUsuario extends AppCompatActivity {
         AlertDialog.Builder cuadrito = new AlertDialog.Builder(this);
         cuadrito.setTitle("Bienvenido(a) amigito(a)!");
         cuadrito.setMessage("Ya puedes jugar");
-        cuadrito.setPositiveButton("Aceptar", (dialog, which) -> {});
+        cuadrito.setPositiveButton("Aceptar", (dialog, which) -> {
+            startActivity(new Intent(RegistrarUsuario.this, Splash.class));
+            finish();
+        });
         cuadrito.show();
     }
 }

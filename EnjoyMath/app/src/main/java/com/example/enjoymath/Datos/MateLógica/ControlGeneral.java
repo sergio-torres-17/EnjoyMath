@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.enjoymath.Datos.Objetos.Locales.Historial;
 import com.example.enjoymath.Negocio.AccesoMaestro;
@@ -14,12 +15,14 @@ import com.example.enjoymath.R;
 public class ControlGeneral {
     private Historial historial;
     private Context context;
+    private String operación;
     private GeneradorNúmeros genNum;
 
     public ControlGeneral(Historial historial, Context context) {
         this.historial = historial;
         this.context = context;
         this.genNum = new GeneradorNúmeros();
+        this.operación = "";
     }
     public void métodoMaestro(TextView txtPregunta, ImageButton btnR1, ImageButton btnR2, ImageButton btnR3, int contadorJuegos, View.OnClickListener listenerCorrecto){
         int cantidad1, cantidad2, respCorrecta, respInc1,respInc2;
@@ -29,7 +32,6 @@ public class ControlGeneral {
                  respCorrecta = respCorrecta(contadorJuegos,cantidad1,cantidad2);
                  respInc1 = respIncorrect(respCorrecta);
                  respInc2 = respIncorrect(respCorrecta);
-                txtPregunta.setText("¿Cuánto es "+cantidad1+" más "+cantidad2+"?");
         System.out.println("Respuesta correcta: "+respCorrecta+
                 "\nRespuesta incorrecta 1: "+respInc1+"\n" +
                 "Respuesta correcta 2: "+respInc2);
@@ -40,54 +42,80 @@ public class ControlGeneral {
                     btn1Usado = true;
                 }else if(valorSort == 2){
                     btnR2.setImageDrawable(this.parseadorNum(respCorrecta));
+                    btnR2.setOnClickListener(listenerCorrecto);
                     btn2Usado = true;
                 }else if(valorSort == 3){
                     btnR3.setImageDrawable(this.parseadorNum(respCorrecta));
+                    btnR3.setOnClickListener(listenerCorrecto);
                     btn3Usado = true;
                 }
                 if(!btn1Usado){
                     btnR1.setImageDrawable(this.parseadorNum(respInc1));
-                    if(!btn2Usado)
-                        btnR1.setImageDrawable(this.parseadorNum(respInc2));
-                    if(!btn3Usado)
+                    btnR1.setOnClickListener(v -> Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show());
+                    if(!btn2Usado) {
+                        btnR2.setImageDrawable(this.parseadorNum(respInc2));
+                        btnR2.setOnClickListener(v -> Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show());
+                    }
+                    if(!btn3Usado){
                         btnR3.setImageDrawable(this.parseadorNum(respInc2));
+                        btnR3.setOnClickListener(v -> Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show());
+                    }
                 }else if(!btn2Usado){
                     btnR2.setImageDrawable(this.parseadorNum(respInc1));
-                    if(!btn3Usado)
+                    btnR2.setOnClickListener(v -> Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show());
+                    if(!btn3Usado){
                         btnR3.setImageDrawable(this.parseadorNum(respInc2));
-                    if(!btn3Usado)
-                        btnR3.setImageDrawable(this.parseadorNum(respInc2));
-                }else if(!btn3Usado){
-                    btnR2.setImageDrawable(this.parseadorNum(respInc1));
-                    if(!btn1Usado)
+                        btnR3.setOnClickListener(v -> Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show());
+                    }
+                    if(!btn1Usado){
                         btnR1.setImageDrawable(this.parseadorNum(respInc2));
-                    if(!btn2Usado)
+                        btnR1.setOnClickListener(v -> Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show());
+                    }
+                }else if(!btn3Usado){
+                    btnR3.setImageDrawable(this.parseadorNum(respInc1));
+                    btnR3.setOnClickListener(v -> Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show());
+                    if(!btn1Usado){
+                        btnR1.setImageDrawable(this.parseadorNum(respInc2));
+                        btnR1.setOnClickListener(v -> Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show());
+                    }
+                    if(!btn2Usado){
                         btnR2.setImageDrawable(this.parseadorNum(respInc2));
+                        btnR2.setOnClickListener(v -> Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show());
+                    }
                 }
+        txtPregunta.setText("¿Cuánto es "+cantidad1+" más "+cantidad2+"?");
     }
     private int num1Preg(){
-        return Integer.parseInt(genNum.númeroAleatorio(0,20));
+        return Integer.parseInt(genNum.númeroAleatorio(0,10));
     }
     private int num2Preg(){
-        return Integer.parseInt(genNum.númeroAleatorio(0,20));
+        return Integer.parseInt(genNum.númeroAleatorio(0,10));
     }
     private int respCorrecta(int contador,int num1,int num2){
-
         System.out.println("Contador: "+contador+"\nhistorial.geNivel(): "+historial.getNivel());
         System.err.println(num1+"+"+num2);
-        if((contador>0&&contador<3)&&(historial.getNivel()>=1&&historial.getNivel()<=3))
-            return num1+num2;
-        if((contador>2&&contador<5)&&(historial.getNivel()>=1&&historial.getNivel()<=3))
-            return num1-num2;
-        if((contador>0&&contador<3)&&(historial.getNivel()>3&&historial.getNivel()<=6))
-            return num1*num2;
-        if((contador>2&&contador<5)&&(historial.getNivel()>3&&historial.getNivel()<=6))
-            return num1/num2;
-        if((contador>0&&contador<3)&&(historial.getNivel()>6&&historial.getNivel()<=9))
-            return (num1/num2)+(num2/num1);
-        else
-            return Integer.parseInt(String.valueOf(this.genNum.raizCuadrada((num1+num2))));
+        this.operación = " más ";
+        return num1+num2;
+       /* if((contador>0&&contador<3)&&(historial.getNivel()>=1&&historial.getNivel()<=3)){
 
+        }
+        if((contador>2&&contador<5)&&(historial.getNivel()>=1&&historial.getNivel()<=3)){
+            this.operación = " menos ";
+            return num1-num2;
+        }
+        if((contador>0&&contador<3)&&(historial.getNivel()>3&&historial.getNivel()<=6)){
+            this.operación = " por ";
+            return num1*num2;
+        }
+        if((contador>2&&contador<5)&&(historial.getNivel()>3&&historial.getNivel()<=6)){
+            this.operación = " división ";
+            return num1/num2;
+        }
+        if((contador>0&&contador<3)&&(historial.getNivel()>6&&historial.getNivel()<=9)){
+            return (num1/num2)+(num2/num1);
+        }
+        else
+            return Integer.parseInt(String.valueOf(this.genNum.raizCuadrada((num1+num2))));*/
     }
     private int respIncorrect(int respCorrect){
         int dev = Integer.parseInt(genNum.númeroAleatorio(0,9));

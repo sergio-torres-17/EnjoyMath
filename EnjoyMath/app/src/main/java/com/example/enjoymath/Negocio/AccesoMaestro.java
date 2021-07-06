@@ -42,7 +42,7 @@ public class AccesoMaestro{//Se implementa serializable para poder usar un objet
         System.out.println("Historial "+this.dbPrincipal.devolverHistorial(id));
         return new Historial(this.dbPrincipal.devolverHistorial(id).split(","));
     }
-    public void actualizarInformación(int idUsuario, Historial historial){
+    public void actualizarInformaciónHistorial(int idUsuario, Historial historial){
         this.dbPrincipal.actualizarAvance(idUsuario, historial);
     }
     public int traerPuntosJuegoActual(int idJuegoActual){
