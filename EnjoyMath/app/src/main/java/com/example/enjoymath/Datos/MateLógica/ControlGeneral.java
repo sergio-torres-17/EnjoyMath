@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.enjoymath.Datos.Objetos.Locales.Historial;
 import com.example.enjoymath.Negocio.AccesoMaestro;
+import com.example.enjoymath.Negocio.AuxiliarSonido;
 import com.example.enjoymath.R;
 
 public class ControlGeneral {
@@ -17,12 +18,14 @@ public class ControlGeneral {
     private Context context;
     private String operación;
     private GeneradorNúmeros genNum;
+    private AuxiliarSonido as;
 
     public ControlGeneral(Historial historial, Context context) {
         this.historial = historial;
         this.context = context;
         this.genNum = new GeneradorNúmeros();
         this.operación = "";
+        this.as = new AuxiliarSonido(context);
     }
     public void métodoMaestro(TextView txtPregunta, ImageButton btnR1, ImageButton btnR2, ImageButton btnR3, int contadorJuegos, View.OnClickListener listenerCorrecto){
         int cantidad1, cantidad2, respCorrecta, respInc1,respInc2;
@@ -51,32 +54,32 @@ public class ControlGeneral {
                 }
                 if(!btn1Usado){
                     btnR1.setImageDrawable(this.parseadorNum(respInc1));
-                    btnR1.setOnClickListener(v -> Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show());
+                    btnR1.setOnClickListener(v -> {Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show();as.reproducirSonido(R.raw.abucheo); });
                     if(!btn2Usado) {
                         btnR2.setImageDrawable(this.parseadorNum(respInc2));
-                        btnR2.setOnClickListener(v -> Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show());
+                        btnR2.setOnClickListener(v -> {Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show();as.reproducirSonido(R.raw.abucheo); });
                     }
                     if(!btn3Usado){
                         btnR3.setImageDrawable(this.parseadorNum(respInc2));
-                        btnR3.setOnClickListener(v -> Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show());
+                        btnR3.setOnClickListener(v -> {Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show();as.reproducirSonido(R.raw.abucheo); });
                     }
                 }else if(!btn2Usado){
                     btnR2.setImageDrawable(this.parseadorNum(respInc1));
-                    btnR2.setOnClickListener(v -> Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show());
+                    btnR2.setOnClickListener(v -> {Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show();as.reproducirSonido(R.raw.abucheo); });
                     if(!btn3Usado){
                         btnR3.setImageDrawable(this.parseadorNum(respInc2));
-                        btnR3.setOnClickListener(v -> Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show());
+                        btnR3.setOnClickListener(v -> {Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show();as.reproducirSonido(R.raw.abucheo); });
                     }
                     if(!btn1Usado){
                         btnR1.setImageDrawable(this.parseadorNum(respInc2));
-                        btnR1.setOnClickListener(v -> Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show());
+                        btnR1.setOnClickListener(v -> {Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show();as.reproducirSonido(R.raw.abucheo); });
                     }
                 }else if(!btn3Usado){
                     btnR3.setImageDrawable(this.parseadorNum(respInc1));
-                    btnR3.setOnClickListener(v -> Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show());
+                    btnR3.setOnClickListener(v -> {Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show();as.reproducirSonido(R.raw.abucheo); });
                     if(!btn1Usado){
                         btnR1.setImageDrawable(this.parseadorNum(respInc2));
-                        btnR1.setOnClickListener(v -> Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show());
+                        btnR1.setOnClickListener(v -> {Toast.makeText(context, "UUUh no sabe!!!", Toast.LENGTH_LONG).show();as.reproducirSonido(R.raw.abucheo); });
                     }
                     if(!btn2Usado){
                         btnR2.setImageDrawable(this.parseadorNum(respInc2));

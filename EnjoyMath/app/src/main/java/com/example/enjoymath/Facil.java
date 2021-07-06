@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.enjoymath.Datos.MateLógica.ControlGeneral;
 import com.example.enjoymath.Datos.Objetos.Locales.Historial;
 import com.example.enjoymath.Negocio.AccesoMaestro;
+import com.example.enjoymath.Negocio.AuxiliarSonido;
 
 import java.util.Date;
 
@@ -22,6 +23,7 @@ public class Facil extends AppCompatActivity {
     private AccesoMaestro am;
     private TextView pregunta;
     private ImageButton r1,r2,r3;
+    private AuxiliarSonido auxSon;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,6 +48,9 @@ public class Facil extends AppCompatActivity {
                                 miHistorial.getNivel()+1,
                                 new Date().toString()));
                 miHistorial = am.devolverHistorial(idUser);
+                auxSon = new AuxiliarSonido(Facil.this);
+                auxSon.reproducirSonido(R.raw.hurra);
+
                 inicializarEventoPrincipal();
             }
         };
